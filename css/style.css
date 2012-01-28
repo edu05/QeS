@@ -121,7 +121,7 @@ left:25%
 }
 .post{
 width:133px;
-margin:10px;
+margin:2px;
 height:60px;
 position:relative;
 text-align:center;
@@ -353,4 +353,11 @@ box-shadow: 2px 2px 4px #999;
 margin-top:10px;
 position:relative;
 float:left;
+}
+.back{
+transform: scale(0.75,0.75);
+-ms-transform: scale(0.75,0.75); /* IE 9 */
+-webkit-transform: scale(0.75,0.75); /* Safari and Chrome */
+-o-transform: scale(0.75,0.75); /* Opera */
+-moz-transform: scale(0.75,0.75); /* Firefox */
 }

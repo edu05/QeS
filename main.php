@@ -80,19 +80,19 @@ if (isset($_SESSION['k_username'])) {
 			<p>Novedades</p>
 			<ul id="mensajes" style="list-style:none;">
 				<li>
-					<div class="post drag">
+					<div class="post drag back first">
 						<div class="imag"><img src="img/avatar.png" /></div>
 						<div class="content">#1</div>
 					</div>
 				</li>
 				<li>
-					<div class="post drag">
+					<div class="post drag mainpost">
 						<div class="imag"><img src="img/avatar.png"/></div>
-						<div id="aqui" class="content">#2</div>
+						<div class="content">#2</div>
 					</div>
 				</li>
 				<li>
-					<div class="post drag">
+					<div class="post drag back second">
 						<div class="imag"><img src="img/avatar.png" /></div>
 						<div class="content">#3</div>
 					</div>
