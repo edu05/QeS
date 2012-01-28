@@ -160,7 +160,7 @@ if (isset($_SESSION['k_username'])) {
 		if ($grup!='Sigo'){
 		echo "
 		<div class='grupo drag sigo'>
-		<div class='group'><a href='deletecolumn.php?name=$grup'>x</a><br>".$grup."</div>";}
+		<div class='group'><a href='deletegroup.php?name=$grup'>x</a><br>".$grup."</div>";}
 		else{
 		echo "
 		<div class='grupo drag';'>
