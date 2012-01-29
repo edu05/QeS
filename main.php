@@ -16,6 +16,13 @@ if (isset($_SESSION['k_username'])) {
 		$database = "qes";
 		$db = mysql_select_db($database,$connection)
 			or die ("Couldn’t select database");
+		$id = $_SESSION['k_UserId'];
+		$query = mysql_query("SELECT * FROM member WHERE UserId = '$id'");
+		$firstrow = mysql_fetch_array($query);
+			$_SESSION["k_username"] = $firstrow['loginName'];
+			$_SESSION["k_email"] = $firstrow['email'];
+			$_SESSION["k_phone"] = $firstrow['phone'];
+			
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +35,28 @@ if (isset($_SESSION['k_username'])) {
 		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
 		<script>
+			function edit(){
+				$('.perfil_val').css('border','solid');
+				$('.perfil_val').css('border-width','1px');
+				$('#save').css('visibility','visible');
+				$('.perfil_val').removeAttr('readonly');
+			}
+			function save(){
+				$('.perfil_val').css('border','none');
+				$('.perfil_val').attr('readonly','readonly');
+				$('#save').css('visibility','hidden');
+				var name = document.getElementsByName('perfilname')[0].value;
+				var number = document.getElementsByName('perfilnumber')[0].value;
+				var email = document.getElementsByName('perfilemail')[0].value;
+				location.href = 'editprofile.php'+'?name='+name+'&number='+number+'&email='+email;
+			}
+			
 			$(function() {
-				$( ".calendar" ).datepicker();
+				$( ".calendar" ).datepicker({
+					 onSelect: function(dateText, inst) {
+						alert(dateText);
+					 }
+					});
 			});
 			$(function() {
 				$( ".drag" ).draggable();
@@ -142,9 +169,12 @@ if (isset($_SESSION['k_username'])) {
 			<tr>
 				<td>
 					<div id="even" class= "drag">
-					<p>Nombre:<?php echo '<b>'.$_SESSION['k_username'].'</b>.';?></p>
-					<p>Numero movil:<?php echo '<b>'.$_SESSION['k_phone'].'</b>.';?></p>
-					<p>email:<?php echo '<b>'.$_SESSION['k_email'].'</b>.';?></p>
+					<form method=post name=informacion>
+						<p>Nombre:<?php echo "<input name=perfilname id='perfil_val' class=perfil_val type=text readonly value='".$_SESSION['k_username']."' style='border:none'>";?></p>
+						<p>Numero movil:<?php echo "<input name=perfilnumber class=perfil_val type=text readonly value=".$_SESSION['k_phone']." style='border:none'>";?></p>
+						<p>email:<?php echo "<input name=perfilemail class=perfil_val type=text readonly value=".$_SESSION['k_email']." style='border:none'>";?></p>
+					</form>
+					<button id=edit onClick=edit()>Edit</button><button id=save onClick=save() style="visibility:hidden">save</button>
 					</div>
 				</td>
 				<td></td>
