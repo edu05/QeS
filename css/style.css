@@ -36,8 +36,11 @@ left:30%;
 .image{
 border:solid;
 border-color:#DDDDDD;
-width:316px;
-float: right;
+height:300px;
+position:absolute;
+left:70%;
+border-radius:5px;
+box-shadow: 3px 3px 6px #999;
 }
 .events{
 position:absolute;
@@ -165,11 +168,12 @@ float:left;
 margin:5px;
 }
 .content{
+padding-top:15px;
 color:#555555;
-width:100px;
+width:90px;
 height:55px;
 position:relative;
-float:left;
+float:right;
 text-align:center;
 }
 ul{
@@ -347,6 +351,8 @@ padding-left: 0;
 white-space: nowrap;
 }
 .imag{
+height:40px;
+width:40px;
 background:#DDD;
 border-radius:5px;
 box-shadow: 2px 2px 4px #999;
@@ -360,4 +366,20 @@ transform: scale(0.75,0.75);
 -webkit-transform: scale(0.75,0.75); /* Safari and Chrome */
 -o-transform: scale(0.75,0.75); /* Opera */
 -moz-transform: scale(0.75,0.75); /* Firefox */
+}
+.perfil_val{
+border-radius:5px;
+border-color:#DDD;
+}
+#canceleditprof{
+visibility:hidden;
+color:red;
+}
+#canceleditprof:hover{
+color:orange;
+cursor:pointer;
+}
+img{
+    vertical-align: middle;
+    height: 100%;
 }
