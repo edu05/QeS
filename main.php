@@ -39,6 +39,7 @@ if (isset($_SESSION['k_username'])) {
 				$('.perfil_val').css('border','solid');
 				$('.perfil_val').css('border-width','1px');
 				$('#save').css('visibility','visible');
+				$('#canceleditprof').css('visibility','visible');
 				$('.perfil_val').removeAttr('readonly');
 			}
 			function save(){
@@ -50,6 +51,15 @@ if (isset($_SESSION['k_username'])) {
 				var email = document.getElementsByName('perfilemail')[0].value;
 				location.href = 'editprofile.php'+'?name='+name+'&number='+number+'&email='+email;
 			}
+			function canceleditprof(){	
+				$("#canceleditprof").click(function(){
+					$('.perfil_val').css('border','none');
+					$('.perfil_val').attr('readonly','readonly');
+					$('#save').css('visibility','hidden');	
+					$('#canceleditprof').css('visibility','hidden');					
+				});
+				}
+
 			
 			$(function() {
 				$( ".calendar" ).datepicker({
@@ -112,13 +122,14 @@ if (isset($_SESSION['k_username'])) {
 			<ul id="mensajes" style="list-style:none;">
 				<li>
 					<div class="post drag back first">
-						<div class="imag"><img src="img/avatar.png" /></div>
+						<div class="imag"><img src="img/contact.png" /></div>
 						<div class="content">#1</div>
 					</div>
 				</li>
 				<li>
 					<div class="post drag mainpost">
-						<div class="imag"><img src="img/avatar.png"/></div>
+						<div class="imag"><?php
+					echo"<img src='view.php?id=$id'>" ?></div>
 						<div class="content">#2</div>
 					</div>
 				</li>
@@ -160,29 +171,23 @@ if (isset($_SESSION['k_username'])) {
 		</div>
 	</div>
 	<div id="tabs-2" class="Page">
-		<table style="width:97%">
-			<tr>
-				<td></td>
-				<td><p>Perfil</p></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>
-					<div id="even" class= "drag">
-					<form method=post name=informacion>
-						<p>Nombre:<?php echo "<input name=perfilname id='perfil_val' class=perfil_val type=text readonly value='".$_SESSION['k_username']."' style='border:none'>";?></p>
-						<p>Numero movil:<?php echo "<input name=perfilnumber class=perfil_val type=text readonly value=".$_SESSION['k_phone']." style='border:none'>";?></p>
-						<p>email:<?php echo "<input name=perfilemail class=perfil_val type=text readonly value=".$_SESSION['k_email']." style='border:none'>";?></p>
-					</form>
-					<button id=edit onClick=edit()>Edit</button><button id=save onClick=save() style="visibility:hidden">save</button>
-					</div>
-				</td>
-				<td></td>
-				<td>
-					<div class="image drag"><img src='img/contact.png'></div>
-				</td>
-			</tr>
-		</table>
+		<p>Perfil</p>
+		<div id="even" class= "drag">
+			<p id="canceleditprof" style="float:right" onClick=canceleditprof()>X</p>
+			<p>Nombre:<?php echo "<input name=perfilname id='perfil_val' class=perfil_val type=text readonly value='".$_SESSION['k_username']."' style='border:none'>";?></p>
+			<p>Numero movil:<?php echo "<input name=perfilnumber class=perfil_val type=text readonly value=".$_SESSION['k_phone']." style='border:none'>";?></p>
+			<p>email:<?php echo "<input name=perfilemail class=perfil_val type=text readonly value=".$_SESSION['k_email']." style='border:none'>";?></p>
+			<button id=edit onClick=edit()>Edit</button><button id=save onClick=save() style="visibility:hidden">save</button>
+		</div>
+		<div class="image drag"><?php echo"<img src='view.php?id=$id'>" ?></div>
+		<div id="load_img" class="drag">
+		<form method="post" action="process.php" enctype="multipart/form-data">
+			<div>
+				<input type="file" name="image" />
+				<input type="submit" value="Upload Image" />
+			</div>
+		</form>
+		</div>
 	</div>
 	<div id="tabs-3" class="Page">
 	<p>friends</p>
