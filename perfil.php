@@ -14,6 +14,8 @@ $query = ("SELECT * FROM member WHERE loginName LIKE '$strin'");
 $resulta = mysql_query($query)
 	or die(mysql_error());
 $row= mysql_fetch_array($resulta);
+$id = $row['UserId'];
+echo "<div class='perfilcontact'><div class='imageperfil'><img src='view.php?id=$id'></div>";
 echo $row['loginName']."<br>".$row['email']."<br>";
 $seguir = $row['UserId'];
 $tabla = "tabla".$row['UserId'];
@@ -47,5 +49,6 @@ $qr = ("SELECT * FROM $tabla");
 		}
 		$i++;
 	}
+	echo "</table></div>";
 
 ?>

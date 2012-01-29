@@ -28,7 +28,7 @@ if (isset($_SESSION['k_username'])) {
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>QeD</title>
+		<title>QeS</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/jquery-ui-1.8.17.custom.css" />
@@ -82,7 +82,6 @@ if (isset($_SESSION['k_username'])) {
 					select : function(event, ui){
 							var name = ui.item.value.replace(/ /g,"_");
                             $('#livesearch').load(
-								
                                 'perfil.php?name=' + name
                             );
 							}
@@ -102,15 +101,15 @@ if (isset($_SESSION['k_username'])) {
 
 <div id="tabs">
 	<ul>
-		<li><div><a>QeD</a></div></li>
+		<li><div><a id="logo"><div class="log drag"><img src="img/qed2.jpg" /></div></a></div></li>
 		<li><a href="#tabs-1">Home</a></li>
 		<li><a href="#tabs-2">Perfil</a></li>
 		<li><a href="#tabs-3">Amigos</a></li>
 		<li><a href="#tabs-4">Eventos</a></li>
 		<li>
 			<a id="search">
-			<form>
-				<input id="buscar_users" name="search" type="text" placeholder="Buscar..." autocomplete="off" class="hint">
+			<form class="searchform">
+				<input id="buscar_users" name="search" type="text" placeholder="Buscar..." autocomplete="off" class="hint searchfield">
 			</form>
 			</a>
 		</li>
@@ -172,10 +171,12 @@ if (isset($_SESSION['k_username'])) {
 				}
 				echo "</table>";
 				?>
-
+				<div style="clear: both;"></div>
 			</div>
+			
 		<div id="calendar" class="calendar drag"></div>
 		</div>
+		<div style="clear: both;"></div>
 	</div>
 	<div id="tabs-2" class="Page">
 		<p>Perfil</p>
@@ -186,19 +187,19 @@ if (isset($_SESSION['k_username'])) {
 			<p>email:<?php echo "<input name=perfilemail class=perfil_val type=text readonly value=".$_SESSION['k_email']." style='border:none'>";?></p>
 			<button id=edit onClick=edit()>Edit</button><button id=save onClick=save() style="visibility:hidden">save</button>
 		</div>
+		
 		<div class="image drag"><?php echo"<img src='view.php?id=$id'>" ?></div>
 		<div id="imgload">
-		<div id="load_img" class="drag">
-		<form method="post" action="process.php" enctype="multipart/form-data">
-			<div>
-				<input type="file" name="image" />
+			<div id="load_img" >
+			<form method="post" action="process.php" enctype="multipart/form-data">
+				<input type="file" name="upload" />
 				<input type="submit" value="Upload Image" />
+			</form>
 			</div>
-		</form>
+			<div class="slide">
+				<a href="#" class="btn-slide">Change Image</a>
+			</div>
 		</div>
-		<div class="slide">
-			<a href="#" class="btn-slide">Change Image</a>
-		</div></div>
 	</div>
 	<div id="tabs-3" class="Page">
 	<p>friends</p>
@@ -255,6 +256,7 @@ if (isset($_SESSION['k_username'])) {
 			$resulta = mysql_query($query)
 				or die(mysql_error());
 			$row= mysql_fetch_array($resulta);
+			echo "<div class='perfilcontact'><div class='imageperfil'><img src='view.php?id=$id'></div>";
 			echo $row['loginName']."<br>".$row['email']."<br>";
 			$seguir = $row['UserId'];
 			$tabla = "tabla".$row['UserId'];
@@ -283,7 +285,7 @@ if (isset($_SESSION['k_username'])) {
 				}
 				$i++;
 			}
-			echo "</table>";
+			echo "</table></div>";
 		?>
 	</div>
 	</div>
