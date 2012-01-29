@@ -88,6 +88,13 @@ if (isset($_SESSION['k_username'])) {
 							}
 					});
 				});
+			$(document).ready(function(){
+				$(".btn-slide").click(function(){
+				  $("#load_img").slideToggle("slow");
+					$(this).toggleClass("active");
+				});
+				
+			});	
 		</script>
 	</head>
 
@@ -180,6 +187,7 @@ if (isset($_SESSION['k_username'])) {
 			<button id=edit onClick=edit()>Edit</button><button id=save onClick=save() style="visibility:hidden">save</button>
 		</div>
 		<div class="image drag"><?php echo"<img src='view.php?id=$id'>" ?></div>
+		<div id="imgload">
 		<div id="load_img" class="drag">
 		<form method="post" action="process.php" enctype="multipart/form-data">
 			<div>
@@ -188,6 +196,9 @@ if (isset($_SESSION['k_username'])) {
 			</div>
 		</form>
 		</div>
+		<div class="slide">
+			<a href="#" class="btn-slide">Change Image</a>
+		</div></div>
 	</div>
 	<div id="tabs-3" class="Page">
 	<p>friends</p>

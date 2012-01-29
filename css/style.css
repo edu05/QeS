@@ -39,6 +39,7 @@ border-color:#DDDDDD;
 height:300px;
 position:absolute;
 left:70%;
+top:20%;
 border-radius:5px;
 box-shadow: 3px 3px 6px #999;
 }
@@ -224,9 +225,9 @@ position:relative;
 }
 #tabs-1{
 width:99%;
-min-height:380px; 
+min-height:560px; 
 height:auto;
-height:380px;
+height:560px;
 position:relative;
 }
 #tabs-3{
@@ -382,4 +383,23 @@ cursor:pointer;
 img{
     vertical-align: middle;
     height: 100%;
+}
+#load_img{
+position:relative;
+display: none;
+background: #0066DD;
+color:white;
+opacity:0.8;
+overflow: hidden;
+width:300px;
+}
+.slide {
+	margin: 0;
+	padding: 0;
+	
+}
+#imgload{
+position:absolute;
+left:66%;
+top:96%;
 }
