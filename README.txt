@@ -2,6 +2,7 @@
 
 jerarquia de archivos:
 
++ creation.php
 + index.html
  - register.html
    - sub.php
@@ -11,11 +12,16 @@ jerarquia de archivos:
 	 - buscauser.php
 	 - busqueda.php
 	 - deletegroup.php
+	 - editprofile.php
 	 - logout.php
 	 - newgroup.php
 	 - perfil.php
+	 - process.php
 	 - stop.php
+	 - view.php
 +--------------------------------------------------+
+creation.php
+	Creates de database.
 index.html
 	Login page.
 register.html
