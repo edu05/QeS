@@ -192,7 +192,7 @@ if (isset($_SESSION['k_username'])) {
 		<div id="imgload">
 			<div id="load_img" >
 			<form method="post" action="process.php" enctype="multipart/form-data">
-				<input type="file" name="upload" />
+				<input type="file" name="image" />
 				<input type="submit" value="Upload Image" />
 			</form>
 			</div>
