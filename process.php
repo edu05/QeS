@@ -136,7 +136,7 @@ $id = $_SESSION['k_UserId'];
             </ul>
  
             <p>
-                <a href="upload.php">Try again</a>
+                <a href="main.php">Try again</a>
             </p>
         </div>
     </body>
